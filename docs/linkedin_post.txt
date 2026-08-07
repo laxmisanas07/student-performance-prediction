@@ -1,0 +1,30 @@
+🚀 Excited to share my latest Machine Learning project built for ML Bubble 2026 organized by Army Institute of Technology (AIT), Pune! 🎓💡
+
+Track: TE-BE – Design & Solve (Advanced) 
+Project Title: Student Performance Prediction using Machine Learning
+
+📌 The Problem:
+Traditional educational evaluations identify struggling students reactively—after final exams are graded, when it is already too late for remedial intervention. 
+
+💡 Our Solution:
+We built an end-to-end predictive Machine Learning system that ingests student demographic, socio-economic, study habits, and intermediate period grades (G1, G2) to forecast final academic performance (G3) during mid-term. This enables teachers and academic counselors to provide proactive early interventions!
+
+🛠️ Tech Stack & Key Technical Highlights:
+• Python, scikit-learn, pandas, numpy, joblib, Streamlit
+• Preprocessing Pipeline: ColumnTransformer with OneHotEncoder for categorical features and StandardScaler for numerical attributes.
+• Multi-Model Benchmark: Evaluated Linear Regression, Random Forest Regressor, and Gradient Boosting Regressor.
+
+📊 Empirical Benchmark Results:
+• Linear Regression: R² = 0.9522 (95.22%) | MAE = 0.7672 (Best Estimator)
+• Gradient Boosting Regressor: R² = 0.9457 | MAE = 0.8235
+• Random Forest Regressor: R² = 0.9448 | MAE = 0.8250
+
+🌐 Live Deployment & Interactive Web App:
+Serialized the optimal pipeline using joblib and deployed an interactive Streamlit Web Application featuring real-time risk classification (Low, Moderate, High Academic Risk)!
+
+🔗 Live Web App Demo: https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app
+💻 GitHub Repository: https://github.com/laxmisanas07/student-performance-prediction
+
+Grateful to Army Institute of Technology (AIT), Pune and Unstop for hosting this fantastic challenge!
+
+#MachineLearning #DataScience #EdTech #PredictiveAnalytics #Python #scikit_learn #Streamlit #AITPune #MLBubble2026 #AI #ArtificialIntelligence #Education #Unstop
