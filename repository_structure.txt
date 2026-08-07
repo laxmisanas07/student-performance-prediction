@@ -1,0 +1,18 @@
+student_performance_prediction/
+│
+├── dataset/
+│   └── student_data.csv                   # Target benchmark dataset (auto-ingested / cached)
+│
+├── models/
+│   └── best_student_model.joblib          # Serialized production pipeline (Preprocessor + Model)
+│
+├── docs/
+│   ├── project_overview_sections.md       # Complete 14-Section Technical & Conceptual Blueprint
+│   ├── academic_report.md                 # 2-Page Academic Paper (IEEE / Formal Style)
+│   ├── ppt_slides_content.md              # 6-Slide Presentation Content & Visual Diagrams Outline
+│   ├── presentation_script.md             # 2-Minute Spoken Pitch Script for Online Defense
+│   └── unstop_checklist.md                # Submission Readiness Checklist for Unstop Platform
+│
+├── main.py                                # End-to-End Modular ML Pipeline Script
+├── requirements.txt                       # Project Dependencies (scikit-learn, pandas, numpy, joblib)
+└── README.md                              # Comprehensive Project Documentation & Quickstart
