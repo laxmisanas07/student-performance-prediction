@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Student Performance Prediction - Submission</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; margin: 40px; color: #1a1a1a; max-width: 900px; margin: auto; padding: 20px; }
+h1, h2, h3 { color: #0d47a1; font-weight: 600; }
+h1 { border-bottom: 2px solid #0d47a1; padding-bottom: 10px; }
+table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+th { background-color: #0d47a1; color: white; }
+tr:nth-child(even) { background-color: #f8f9fa; }
+code { background: #eef2f5; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; }
+pre { background: #263238; color: #eceff1; padding: 15px; border-radius: 6px; overflow-x: auto; }
+blockquote { border-left: 4px solid #0d47a1; margin: 0; padding-left: 15px; color: #555; }
+</style>
+</head>
+<body>
+<h1>Predictive Modeling of Secondary Student Academic Performance Using Supervised Machine Learning</h1><br><br><strong>Authors</strong>: ML Team (TE-BE Track)  
+<strong>Affiliation</strong>: Department of Computer Engineering, Army Institute of Technology (AIT), Pune  
+<strong>Event</strong>: ML Bubble 2026 – Machine Learning Awareness & Skill Building Challenge  
+<strong>Mandatory GitHub Repository</strong>: [https://github.com/laxmisanas07/student-performance-prediction](https://github.com/laxmisanas07/student-performance-prediction)  
+<strong>Live Interactive Web App</strong>: [https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app](https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app)  <br><br>---<br><br><h2>Abstract</h2>
+Early prediction of academic failure or underperformance provides educational stakeholders with actionable insights to deploy targeted interventions prior to high-stakes examinations. This paper presents a supervised machine learning framework for forecasting final student grade scores ($G_3$) using demographic, socio-economic, behavioral, and intermediate academic attributes ($G_1, G_2$). Utilizing data preprocessed via standardized scaling and categorical dummy encoding, three distinct regression algorithms—Linear Regression, Random Forest Regressor, and Gradient Boosting Regressor—were benchmarked on an 80-20 train-test partition. Empirical evaluation revealed high predictive accuracy, with Linear Regression achieving an $R^2$ score of 0.9522 and a Mean Absolute Error ($\text{MAE}$) of 0.7672, closely followed by Gradient Boosting ($R^2 = 0.9457$) and Random Forest ($R^2 = 0.9448$). The trained pipeline was serialized for EdTech integration.<br><br><strong>Keywords</strong>: Student Performance Prediction, EdTech, Supervised Machine Learning, Gradient Boosting, Predictive Analytics, Regression Analysis.<br><br>---<br><br><h2>1. Introduction</h2>
+Academic failure imposes emotional, financial, and institutional burdens on students, families, and educational entities. Traditional institutional evaluation systems rely primarily on summative assessments conducted at semester endpoints. Consequently, struggling students are often identified only after failing terminal examinations, leaving minimal room for remedial intervention. <br><br>With the rapid adoption of digital Learning Management Systems (LMS) and centralized educational ERPs, multivariate student data—encompassing attendance rates, weekly study habits, parent educational levels, and past academic failures—can be systematically ingested. Machine Learning (ML) offers a data-driven mechanism to model these complex multivariate dependencies, establishing an automated early-warning framework for academic advisors.<br><br>---<br><br><h2>2. Methodology & System Architecture</h2><br><br><h3>2.1 Dataset Specifications</h3>
+The study utilizes the benchmark Student Performance dataset (Cortez & Silva, 2008). The dataset features 32 predictor attributes capturing:
+<li><strong>Demographic Variables</strong>: Sex, age, urban/rural home address, family size, guardian status.</li>
+<li><strong>Socio-Economic Factors</strong>: Parent cohabitation status, parents' education levels (`Medu`, `Fedu`), parents' occupations (`Mjob`, `Fjob`).</li>
+<li><strong>Behavioral & Extracurricular Factors</strong>: Weekly study time (`studytime`), past failures, extra educational support (`schoolsup`), alcohol consumption (`Dalc`, `Walc`), free time, absences.</li>
+<li><strong>Intermediate Grades</strong>: Period 1 grade ($G_1$) and Period 2 grade ($G_2$).</li>
+<li><strong>Target Variable</strong>: Final Grade ($G_3$), continuous integer scale $[0, 20]$.</li><br><br>```
++-------------------+      +-------------------------+      +-------------------------+
+| Raw Student Data  | ---> | Preprocessing Pipeline  | ---> | Train-Test Split (80/20)|
+| (32 Predictors)   |      | OneHot + StandardScaler |      | (800 Train / 200 Test)  |
++-------------------+      +-------------------------+      +-------------------------+
+                                                                         |
+                                                                         v
++-------------------+      +-------------------------+      +-------------------------+
+|  Serialized Model | <--- | Comparative Evaluation  | <--- | Model Benchmarking      |
+|  (.joblib format) |      | MAE, RMSE, R² Score     |      | LinReg, RF, GradBoost   |
++-------------------+      +-------------------------+      +-------------------------+
+```<br><br><h3>2.2 Preprocessing & Pipeline Design</h3>
+Data integrity checks confirmed zero missing values. Categorical features (17 features including `Mjob`, `reason`, `schoolsup`) were transformed using one-hot dummy encoding (`drop='first'`). Numerical features (15 features including `absences`, `studytime`, `G1`, `G2`) were normalized using `StandardScaler` to remove magnitude distortion:
+$$z = \frac{x - \mu}{\sigma}$$
+To prevent data leakage, preprocessing transformations were fitted exclusively on the training subset ($N_{train} = 800$) before application to the test set ($N_{test} = 200$).<br><br><h3>2.3 Model Formulations</h3>
+Three regression paradigms were trained:
+1. <strong>Ordinary Least Squares (OLS) Linear Regression</strong>: Assumes linear response across predictor dimensions:
+   $$\hat{y} = \beta_0 + \sum_{j=1}^{p} \beta_j X_j$$
+2. <strong>Random Forest Regressor</strong>: Ensemble of 100 decorrelated decision trees employing bootstrap aggregation (bagging) and random subspace feature sampling.
+3. <strong>Gradient Boosting Regressor</strong>: Sequential ensemble building 100 decision trees by minimizing loss residuals via gradient descent:
+   $$F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$$<br><br>---<br><br><h2>3. Experimental Results & Comparative Analysis</h2><br><br>Models were evaluated across three standard regression metrics: Mean Absolute Error ($\text{MAE}$), Root Mean Squared Error ($\text{RMSE}$), and Coefficient of Determination ($R^2$).<br><br><h3>Table 1: Experimental Performance Metrics</h3>
+| Model Architecture | MAE (Lower is better) | RMSE (Lower is better) | R² Score (Higher is better) |
+| :--- | :---: | :---: | :---: |
+| <strong>Linear Regression</strong> | <strong>0.7672</strong> | <strong>0.9674</strong> | <strong>0.9522</strong> |
+| <strong>Gradient Boosting Regressor</strong> | 0.8235 | 1.0318 | 0.9457 |
+| <strong>Random Forest Regressor</strong> | 0.8250 | 1.0395 | 0.9448 |<br><br><h3>Discussion</h3>
+The strong linear correlation between intermediate period scores ($G_1, G_2$) and the final score ($G_3$) enables Linear Regression to achieve an optimal $R^2$ of 0.9522, demonstrating that past periodic performance combined with standardized study attributes provides an exceptionally tight linear fit. Non-linear ensemble models (Gradient Boosting and Random Forest) exhibited near-equivalent precision ($R^2 > 0.944$), verifying pipeline stability across different estimator topologies.<br><br>---<br><br><h2>4. EdTech Deployment Considerations & Future Work</h2>
+The winning pipeline was serialized using `joblib` into `best_student_model.joblib`. Lightweight inference endpoints can be encapsulated in FastAPI microservices for integration into institutional portals. <br><br><h3>Future Extensions</h3>
+1. <strong>Explainable AI (XAI)</strong>: Incorporating SHAP values to output student-specific risk factor breakdowns for academic counselors.
+2. <strong>Dynamic Risk Dashboarding</strong>: Building a web interface with Streamlit/React for real-time score simulation.<br><br>---<br><br><h2>5. Conclusion</h2>
+This project presents an effective machine learning approach to predicting student performance. Demonstrating high predictive capability ($R^2 = 0.9522$, $\text{MAE} = 0.7672$), the automated Python implementation offers a deployable solution for early academic risk identification in EdTech platforms.<br><br>---<br><br><h2>References</h2>
+1. Cortez, P., & Silva, A. M. G. (2008). <em>Using Data Mining to Predict Secondary School Student Performance</em>. In Proceedings of 5th Annual Future Business Technology Conference, EUROSIS, pp. 5–12.
+2. Pedregosa, F., et al. (2011). <em>Scikit-learn: Machine Learning in Python</em>. Journal of Machine Learning Research, 12, 2825–2830.
+
+</body>
+</html>

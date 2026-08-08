@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Student Performance Prediction - Submission</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; margin: 40px; color: #1a1a1a; max-width: 900px; margin: auto; padding: 20px; }
+h1, h2, h3 { color: #0d47a1; font-weight: 600; }
+h1 { border-bottom: 2px solid #0d47a1; padding-bottom: 10px; }
+table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+th { background-color: #0d47a1; color: white; }
+tr:nth-child(even) { background-color: #f8f9fa; }
+code { background: #eef2f5; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; }
+pre { background: #263238; color: #eceff1; padding: 15px; border-radius: 6px; overflow-x: auto; }
+blockquote { border-left: 4px solid #0d47a1; margin: 0; padding-left: 15px; color: #555; }
+</style>
+</head>
+<body>
+<h1>PowerPoint Presentation Deck Content (6 Slides)</h1><br><br><strong>Track</strong>: TE-BE – Design & Solve (Advanced)  
+<strong>Event</strong>: ML Bubble 2026 – Army Institute of Technology (AIT), Pune  
+<strong>Project Title</strong>: Student Performance Prediction using Machine Learning  <br><br>---<br><br><h2>Slide 1: Title & Project Overview</h2><br><br><h3>Slide Content</h3>
+<li><strong>Header</strong>: Student Performance Prediction using Machine Learning</li>
+<li><strong>Subtitle</strong>: Early Academic Risk Detection & Predictive Analytics for EdTech</li>
+<li><strong>Track</strong>: TE-BE – Design & Solve (Advanced) | ML Bubble 2026, AIT Pune</li>
+<li><strong>Team</strong>: ML Innovators</li>
+<li><strong>Key Takeaway</strong>: A data-driven machine learning system to predict final student grades ($G_3$) using socio-economic, behavioral, and academic predictors to enable timely remedial intervention.</li><br><br><h3>Suggested Diagram / Visual Layout</h3>
+<li><strong>Visual</strong>: split screen layout with project title on left side and an icon layout on the right showing 3 pillars: `Data Ingestion -> Machine Learning Pipeline -> EdTech Early Warning`.</li><br><br>---<br><br><h2>Slide 2: Problem Statement & ML Suitability</h2><br><br><h3>Slide Content</h3>
+<li><strong>The Challenge</strong>:</li>
+  - Educational institutions rely on reactive end-of-term exams.
+  - At-risk students are identified too late for effective intervention.
+  - Academic outcomes depend on complex, multi-dimensional socio-economic and behavioral factors.
+<li><strong>Why Machine Learning?</strong>:</li>
+  - <strong>Non-Linear Dynamics</strong>: Captures subtle interactions between study time, parental education, absences, and academic scores.
+  - <strong>Scalability</strong>: Enables instant evaluation of thousands of student profiles.
+  - <strong>Proactive EdTech</strong>: Powers real-time early warning alerts for educators and counselors.<br><br><h3>Suggested Diagram / Visual Layout</h3>
+<li><strong>Diagram</strong>: Comparative Infographic:</li>
+  - <em>Traditional Approach</em>: Student Enrolls -> Terminal Exam -> Failure Detected (Too Late!)
+  - <em>ML Predictive Approach</em>: Ingest Profile & Mid-term Data -> ML Model Forecasts Risk -> Targeted Counseling -> Student Success!<br><br>---<br><br><h2>Slide 3: Dataset Architecture & Feature Engineering</h2><br><br><h3>Slide Content</h3>
+<li><strong>Dataset Source</strong>: Benchmark UCI Student Performance Dataset (33 total fields).</li>
+<li><strong>Core Feature Categories</strong>:</li>
+  - <strong>Academic Records</strong>: Period 1 grade ($G_1$), Period 2 grade ($G_2$), past failures (`failures`).
+  - <strong>Study Habits</strong>: Weekly study time (`studytime`), extra educational support (`schoolsup`), class absences (`absences`).
+  - <strong>Socio-Economic & Demographics</strong>: Parental education (`Medu`, `Fedu`), family status (`famsize`, `Pstatus`), internet access (`internet`).
+<li><strong>Data Preprocessing</strong>:</li>
+  - `OneHotEncoder`: Encodes 17 categorical variables cleanly.
+  - `StandardScaler`: Normalizes 15 continuous variables to zero mean / unit variance.
+  - `Train-Test Split`: 80% Training ($N=800$) / 20% Evaluation ($N=200$).<br><br><h3>Suggested Diagram / Visual Layout</h3>
+<li><strong>Diagram</strong>: Feature Taxonomy Grid / Block Diagram displaying 4 color-coded feature buckets connected to a central Preprocessing Transformer block (`ColumnTransformer`).</li><br><br>---<br><br><h2>Slide 4: Model Architecture & Comparative Evaluation</h2><br><br><h3>Slide Content</h3>
+<li><strong>Algorithms Evaluated</strong>:</li>
+  1. <strong>Linear Regression</strong>: Baseline interpretable continuous model.
+  2. <strong>Random Forest Regressor</strong>: 100-tree bagging ensemble.
+  3. <strong>Gradient Boosting Regressor</strong>: 100-stage boosting ensemble.
+<li><strong>Experimental Results</strong>:</li><br><br>| Model Architecture | MAE ↓ | RMSE ↓ | R² Score ↑ | Evaluation Status |
+| :--- | :---: | :---: | :---: | :--- |
+| <strong>Linear Regression</strong> | <strong>0.7672</strong> | <strong>0.9674</strong> | <strong>0.9522</strong> | <strong>Best Estimator</strong> |
+| <strong>Gradient Boosting Regressor</strong> | 0.8235 | 1.0318 | 0.9457 | High Precision |
+| <strong>Random Forest Regressor</strong> | 0.8250 | 1.0395 | 0.9448 | Robust Baseline |<br><br><h3>Suggested Diagram / Visual Layout</h3>
+<li><strong>Suggested Chart</strong>: Horizontal Bar Chart comparing $R^2$ Scores and Grouped Bar Chart comparing MAE/RMSE across the 3 algorithms.</li><br><br>---<br><br><h2>Slide 5: Model Deployment & EdTech Architecture</h2><br><br><h3>Slide Content</h3>
+<li><strong>Model Serialization</strong>: Best performing model pipeline serialized to `models/best_student_model.joblib`.</li>
+<li><strong>Production Integration</strong>:</li>
+  - <strong>REST API Endpoint</strong>: Exposed via FastAPI / Flask microservice.
+  - <strong>LMS Integration</strong>: Plugs into Canvas, Moodle, or institutional ERP systems.
+<li><strong>Key Beneficiaries</strong>:</li>
+  - <strong>Educators</strong>: Identify struggling students early in the semester.
+  - <strong>Counselors</strong>: Receive feature importance breakdowns (e.g., high absences, low study hours).
+  - <strong>Students</strong>: Receive personalized study recommendations.<br><br><h3>Suggested Diagram / Visual Layout</h3>
+<li><strong>Diagram</strong>: System Architecture Flowchart:  </li>
+  `Student ERP Data -> REST API Endpoint -> Joblib Model Pipeline -> Risk Score Dashboard (Red / Yellow / Green Alert)`.<br><br>---<br><br><h2>Slide 6: Future Scope & Conclusion</h2><br><br><h3>Slide Content</h3>
+<li><strong>Future Enhancements</strong>:</li>
+  - <strong>Explainable AI (XAI)</strong>: Integrate SHAP values to explain specific risk factors to parents and teachers.
+  - <strong>Multi-Semester Time-Series</strong>: Incorporate LSTM/Recurrent models for multi-year academic trajectory tracking.
+  - <strong>Remediation Recommender</strong>: Auto-generate personalized study plans based on identified feature gaps.
+<li><strong>Conclusion</strong>:</li>
+  - Built a production-ready end-to-end ML solution for student performance prediction.
+  - Achieved outstanding predictive fit ($R^2 = 0.9522, \text{MAE} = 0.7672$).
+  - Ready for immediate submission for <strong>ML Bubble 2026</strong>.<br><br><h3>Suggested Diagram / Visual Layout</h3>
+<li><strong>Visual</strong>: Summary Roadmap Timeline (Phase 1: ML Baseline Completed -> Phase 2: LMS Deployment -> Phase 3: Explainable AI Integration).</li>
+
+</body>
+</html>

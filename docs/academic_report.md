@@ -3,6 +3,8 @@
 **Authors**: ML Team (TE-BE Track)  
 **Affiliation**: Department of Computer Engineering, Army Institute of Technology (AIT), Pune  
 **Event**: ML Bubble 2026 – Machine Learning Awareness & Skill Building Challenge  
+**Mandatory GitHub Repository**: [https://github.com/laxmisanas07/student-performance-prediction](https://github.com/laxmisanas07/student-performance-prediction)  
+**Live Interactive Web App**: [https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app](https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app)  
 
 ---
 

@@ -7,6 +7,9 @@
 
 An end-to-end Machine Learning pipeline engineered for **ML Bubble 2026 – Machine Learning Awareness & Skill Building Challenge** organized by the **Army Institute of Technology (AIT), Pune**. 
 
+- 💻 **Mandatory GitHub Repository**: [https://github.com/laxmisanas07/student-performance-prediction](https://github.com/laxmisanas07/student-performance-prediction)
+- 🌐 **Live Web Application Demo**: [https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app](https://student-performance-prediction-klyac6rznvfsk5j6k6j6gt.streamlit.app)
+
 This project tackles early identification of academic risk by predicting students' final academic performance ($G_3$) based on socio-economic, demographic, study behavior, and historical academic attributes.
 
 ---
