@@ -1,0 +1,71 @@
+{
+  "selected_model": "Random Forest Regressor",
+  "selection_criterion": "Lowest Root Mean Squared Error (RMSE) on 20% holdout test set",
+  "data_provenance": "Authentic UCI Student Performance Dataset (Mathematics Course)",
+  "sample_size": 395,
+  "train_samples": 316,
+  "test_samples": 79,
+  "target_variable": "G3 (Final Mathematics Grade, 0-20 scale)",
+  "features_count": 32,
+  "categorical_features": [
+    "school",
+    "sex",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic"
+  ],
+  "numerical_features": [
+    "age",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "G1",
+    "G2"
+  ],
+  "best_metrics": {
+    "mae": 1.1858,
+    "rmse": 1.9706,
+    "r2_score": 0.8106
+  },
+  "all_benchmarks": [
+    {
+      "model_name": "Random Forest Regressor",
+      "mae": 1.1858,
+      "rmse": 1.9706,
+      "r2_score": 0.8106
+    },
+    {
+      "model_name": "Gradient Boosting Regressor",
+      "mae": 1.1526,
+      "rmse": 1.9829,
+      "r2_score": 0.8083
+    },
+    {
+      "model_name": "Linear Regression",
+      "mae": 1.6467,
+      "rmse": 2.3784,
+      "r2_score": 0.7241
+    }
+  ]
+}
